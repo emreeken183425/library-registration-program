@@ -1,0 +1,11 @@
+.App {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.home{
+    background: gray;
+    width: 100%;
+    height: 650px;
+}
+
