@@ -1,27 +1,29 @@
-const bookModel = require("../models/books");
+const bookModel = require("../models/books-models");
 
 
 //**** POST İŞLEMİ  ****/
-const  createOne=async(req,res)=>{
+const createBook=async(req,res)=>{
     try {
-        const {bookName}=req.body;
-        const newBook=await bookModel.create({
-            bookName
-            
-        })
-       return res.status(201).json(newBook)
+        const {bookName,author,category,publisher}=req.body;
+        const newBook=await bookModel.createBook({
+            bookName,
+            author,
+            category,
+            publisher
 
-    } catch (err) {
-        return res.json({message:err.message})
+        })
+
+    } catch (error) {
+        
     }
 }
 
 
 
 //**** BİRDEN FAZLA POST İŞLEMİ  ****/
-const  bulkCreate=async(req,res)=>{
+const  bulkCreateBook=async(req,res)=>{
     try {
-        const newBooks=await bookModel.bulkCreate(req.body);
+        const newBooks=await bookModel.bulkCreateBook(req.body);
         return res.status(201).json(newBooks)
 
 
@@ -31,7 +33,7 @@ const  bulkCreate=async(req,res)=>{
 }
 
 //**** GET İŞLEMİ  ****/
-const  find=async(req,res)=>{
+const  findBook=async(req,res)=>{
     try {
         const book=await bookModel.findAll();
         return res.json(user)
@@ -43,12 +45,15 @@ const  find=async(req,res)=>{
 }
 
 //**** PUT/UPDATE İŞLEMİ  ****/
-const  update=async(req,res)=>{
+const  updateBook=async(req,res)=>{
     try {
-        const {bookName}=req.body;
-       const changeBook= await bookModel.update({bookName:bookName},{
+        const {bookName,author,category,publisher}=req.body;
+       const changeBook= await bookModel.updateBook({bookName:bookName,author:author,category:category,publisher:publisher},{
             where:{
-                bookName:"gül sarı"
+                bookName:"gül sarı",
+                author:"geroge orwell",
+                category:"historical",
+                publisher:"Yk"
             }
         })
 return res.json(changeBook)
@@ -75,9 +80,9 @@ const  delItem=async(req,res)=>{
 
 
 module.exports={
-createOne,
-bulkCreate,
-find,
-update,
+createBook,
+bulkCreateBook,
+findBook,
+updateBook,
 delItem
 }

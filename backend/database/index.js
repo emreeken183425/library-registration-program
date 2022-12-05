@@ -25,8 +25,9 @@ const CONNECT_DB=async()=>{
 
 const REFRESH_DB=async()=>{
     try {
-        const bookModel=require('../models/books')
-        bookModel.sync();
+        const bookModel=require('../models/books-models')
+        
+        sequelize.sync({force:true})
        
 
 

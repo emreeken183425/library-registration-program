@@ -1,21 +1,21 @@
 const express=require('express')
 const router=express.Router();
-const opCtrl=require('../controllers/bookController')
+const bookCtrl=require('../controllers/bookController')
 
 
 
 
-router.route('/create').post(opCtrl.createOne);
+router.route('/create').post(bookCtrl.createBook);
 
-router.route('/bulkcreate').post(opCtrl.bulkCreate);
+router.route('/bulkcreate').post(bookCtrl.bulkCreateBook);
 
-router.route('/find').get(opCtrl.find);
-
-
-router.route('/update/:id').put(opCtrl.update);
+router.route('/find').get(bookCtrl.findBook);
 
 
-router.route('/delete').delete(opCtrl.delItem);
+router.route('/update/:id').put(bookCtrl.updateBook);
+
+
+router.route('/delete').delete(bookCtrl.delItem);
 
 
 
