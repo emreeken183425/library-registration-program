@@ -6,24 +6,24 @@ function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid">
-          <a onClick={()=>navigate('/')} className="navbar-brand" >
+          <h1 onClick={()=>navigate('/')} className="navbar-brand" >
             LİBRARY
-          </a>
+          </h1>
           <div className="collapse navbar-collapse" >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a onClick={()=>navigate('/')}  className="nav-link active"  >
+                <h1 onClick={()=>navigate('/')}  className="nav-link active"  >
                   HOME
-                </a>
+                </h1>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" onClick={()=>navigate('/book')} >
+                <h1 className="nav-link active" onClick={()=>navigate('/book')} >
                   BOOOKS
-                </a>
+                </h1>
               </li>
               
               <li className="nav-item">
-                <a onClick={()=>navigate('/addbook')} className="nav-link active ">ADD BOOKS</a>
+                <h1 onClick={()=>navigate('/addbook')} className="nav-link active ">ADD BOOKS</h1>
               </li>
             </ul>
             <form className="d-flex  " role="search">

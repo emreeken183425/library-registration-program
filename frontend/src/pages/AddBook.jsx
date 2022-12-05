@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
-function AddBook({book,handleChange,addBook}) {
+function AddBook({}) {
+
+  const [book, setBook] = useState({
+    bookName:"",
+    author:"",
+    category:"",
+    publisher:""
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target.value;
+    setBook((prevInput) => {
+      return {
+        ...prevInput,
+        [name]: value,
+      };
+    });
+  };
+
+
+  const addBook = (e) => {
+    e.preventDefault();
+    const newBook = {
+      bookName: book.bookName,
+      author: book.author,
+      category: book.category,
+      publisher: book.publisher
+     
+    };
+    //backende veri gönderdik newbook backendeki server.js bizim url
+    axios.post("/newbook", newBook);
+    alert(`The Book ${book.bookName} is added. `);
+    // form kaydettikten sonra form içi boşalsın diye
+    
+  };
+  
+
+
   return (
     <div>
       <div className="container w-50 mt-5 border border-secondary ">
@@ -8,8 +46,8 @@ function AddBook({book,handleChange,addBook}) {
           <div className="form-floating mb-3">
             <input cd
               type="text"
-              //value={book.bookName}
-              onChange={handleChange}
+              
+             onChange={handleChange}
               name="bookName"
               className="form-control"
               id="floatingInput"
@@ -20,8 +58,8 @@ function AddBook({book,handleChange,addBook}) {
           <div className="form-floating mb-3">
             <input
               type="text"
-              //value={book.author}
               onChange={handleChange}
+              
               name="author"
               className="form-control"
               id="floatingInput"
@@ -33,19 +71,18 @@ function AddBook({book,handleChange,addBook}) {
           <div className="form-floating mb-3">
           <input
               type="text"
-              
               onChange={handleChange}
+            
               name="department"
               className="form-control"
               id="floatingInput"
               placeholder="department"
             />
-            <label htmlFor="floatingSelect"> Department</label>
+            <label htmlFor="floatingSelect"> Category</label>
           </div>
            <div className="form-floating mb-3">
             <input
               type="text"
-              //value={book.publisher}
               onChange={handleChange}
               name="publisher"
               className="form-control"
@@ -55,20 +92,9 @@ function AddBook({book,handleChange,addBook}) {
             <label htmlFor="floatingInput">Publisher</label>
           </div>
           
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-             //value={book.comments}
-              onChange={handleChange}
-              name="Comments"
-              className="form-control"
-              id="floatingInput"
-              placeholder="Comments"
-            />
-            <label htmlFor="floatingInput">Comments</label>
-          </div>
+         
           
-          <button type="button" onClick={addBook} className="btn btn-primary mb-3">Add Book</button>
+          <button type="button" onClick={addBook}  className="btn btn-primary mb-3">Add Book</button>
         </form>
       </div>
     </div>

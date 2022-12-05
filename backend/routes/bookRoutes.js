@@ -11,7 +11,7 @@ router.route('/books').post(opCtrl.bulkCreate);
 router.route('/book').get(opCtrl.find);
 
 //*** put/update işlemi   ****/
-router.route('/book').put(opCtrl.update);
+router.route('/book/:id').put(opCtrl.update);
 
 //*** delete işlemi   ****/
 router.route('/delete/:id').delete(opCtrl.delItem);

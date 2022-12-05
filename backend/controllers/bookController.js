@@ -34,18 +34,10 @@ const find = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const { bookName, author, category, publisher } = req.body;
-    const changeBook = await bookModel.update({
-      bookName: bookName,
-      author: author,
-      category: category,
-      publisher: publisher,
-    },{
+    const { bookName } = req.body;
+    const changeBook = await bookModel.update({ bookName: bookName},{
         where:{
-            bookName:"1986",
-            author:"George Orvel",
-            category:"Historical",
-            publisher:"Ykr"
+            bookName:"1987"
         }
     });
 
