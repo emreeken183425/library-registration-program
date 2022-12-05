@@ -1,14 +1,13 @@
 const express=require('express')
 const app =express();
-const db=require('./database/index')
-const opRoute=require('./routes/bookRoutes')
+const db=require('./database')
+const bookRoute=require("./routes/bookRoutes")
 
 
-app.use(express.json());
 
+app.use(express.json())// req.body .alışması için 
 
-app.use(opRoute)
-
+app.use(bookRoute)
 
 
 db.CONNECT_DB();
@@ -16,9 +15,11 @@ db.CONNECT_DB();
 
 
 
-const port=4000;
 
+
+
+const port=5000;
 app.listen(port,()=>{
-    //db.REFRESH_DB();
+  //db.REFRESH_DB();// bir kere çalıştır databsede oluştu sonra yoruma al almassan tekrar aynısı oluşur
     console.log(`localhost:${port} is active `);
 })
