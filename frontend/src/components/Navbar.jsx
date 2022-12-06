@@ -17,7 +17,7 @@ function Navbar() {
                 </h1>
               </li>
               <li className="nav-item">
-                <h1 className="nav-link active" onClick={()=>navigate('/book')} >
+                <h1 className="nav-link active" onClick={()=>navigate('/bookk')} >
                   BOOOKS
                 </h1>
               </li>

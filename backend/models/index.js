@@ -5,13 +5,7 @@ const db=require('../database/index')
 
 // sonra tablomuzu oluşturuyoruz
 // User burada modelin adı sonrası kolonları 
-const bookModel=db.sequelize.define('Book',{
-    bookName:{
-        type:DataTypes.STRING(50),
-        
-        
-    }
-},
+const indexModel=db.sequelize.define('Index',{},
 {
     createAt:true,
     deleteAt:true,
@@ -20,4 +14,4 @@ const bookModel=db.sequelize.define('Book',{
 
 })
 
-module.exports=bookModel;
+module.exports=indexModel;

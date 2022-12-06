@@ -5,7 +5,7 @@ let db = {};
 const sequelize = new Sequelize({
   host: "localhost",
   dialect: "postgres",
-  database: "bookhome",
+  database: "test",
   username: "postgres",
   password: "183425",
   port: 5433,
@@ -26,6 +26,24 @@ const CONNECT_DB = async (req, res) => {
 const REFRESH_DB = async () => {
   try {
     const bookModel=require("../models/book-models")
+    const authorModel=require("../models/author-models")
+    const categoryModel=require("../models/category-models")
+    const publisherModel=require("../models/publisher-models")
+     const indexModel=require("../models/index")
+
+    // book model ilişkileri
+    bookModel.hasOne(authorModel);
+    authorModel.belongsTo(bookModel);
+
+    bookModel.belongsToMany(categoryModel,{through:indexModel});
+    categoryModel.belongsToMany(bookModel,{through:indexModel});
+
+    bookModel.belongsToMany(publisherModel,{through:indexModel});
+    publisherModel.belongsToMany(bookModel,{through:indexModel});
+
+ 
+
+
 
 
     

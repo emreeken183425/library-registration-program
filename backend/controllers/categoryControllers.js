@@ -1,12 +1,12 @@
-const bookModel = require("../models/book-models");
+const categoryModel = require("../models/category-models");
 
 
 //***      POST/CREATE İŞLEMİ          ****/
 const createOne = async (req, res) => {
   try {
-    const { bookName } = req.body;
-    const newBook = await bookModel.create({bookName});
-    return res.status(200).json(newBook);
+    const { category } = req.body;
+    const newCategory = await categoryModel.create({category});
+    return res.status(200).json(newCategory);
 
   } catch (err) {
     return res.json({ message: err.message });
@@ -16,8 +16,8 @@ const createOne = async (req, res) => {
 //***      POST(ÇOKLU) İŞLEMİ          ****/
 const bulkCreate = async (req, res) => {
   try {
-    const newBooks = await bookModel.bulkCreate(req.body);
-    return res.status(200).json(newBooks);
+    const newCategorys = await categoryModel.bulkCreate(req.body);
+    return res.status(200).json(newCategorys);
   } catch (err) {
     return res.json({ message: err.message });
   }
@@ -27,8 +27,8 @@ const bulkCreate = async (req, res) => {
 //***      FİND/GET İŞLEMİ          ****/
 const find = async (req, res) => {
   try {
-    const book = await bookModel.findAll();
-    return res.json(book);
+    const category = await categoryModel.findAll();
+    return res.json(category);
   } catch (err) {
     return res.json({ message: err.message });
   }
@@ -38,15 +38,15 @@ const find = async (req, res) => {
 //***      UPDATE/PUT İŞLEMİ          ****/
 const update = async (req, res) => {
   try {
-    const { bookName } = req.body;
-    const changeBook = await bookModel.update({bookName: bookName },{
+    const { category } = req.body;
+    const changecategory = await categoryModel.update({category:category },{
         where:{
-            bookName:"Gönül"
+            category:"tarih",
            
         }
     }).catch((err)=>{console.log(err); })
 
-    return res.status(200).json(changeBook);
+    return res.status(200).json(changecategory);
   } catch (err) {
     return res.json({ message: err.message });
   }
@@ -57,7 +57,7 @@ const update = async (req, res) => {
 const delItem = async (req, res) => {
   try {
     const id=req.params.id;
-    await bookModel.destroy({where:{
+    await categoryModel.destroy({where:{
         id:id
     }})
 

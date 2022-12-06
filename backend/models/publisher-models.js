@@ -3,13 +3,10 @@ const { DataTypes } = require('sequelize')
 const db=require('../database/index')
 
 
-// sonra tablomuzu oluşturuyoruz
-// User burada modelin adı sonrası kolonları 
-const bookModel=db.sequelize.define('Book',{
-    bookName:{
-        type:DataTypes.STRING(50),
-        
-        
+ 
+const publisherModel=db.sequelize.define('Publisher',{
+    publisher:{
+        type:DataTypes.STRING(50)   
     }
 },
 {
@@ -20,4 +17,4 @@ const bookModel=db.sequelize.define('Book',{
 
 })
 
-module.exports=bookModel;
+module.exports=publisherModel;

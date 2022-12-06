@@ -1,12 +1,12 @@
-const bookModel = require("../models/book-models");
+const authorModel = require("../models/author-models");
 
 
 //***      POST/CREATE İŞLEMİ          ****/
 const createOne = async (req, res) => {
   try {
-    const { bookName } = req.body;
-    const newBook = await bookModel.create({bookName});
-    return res.status(200).json(newBook);
+    const { author } = req.body;
+    const newAuthor = await authorModel.create({author});
+    return res.status(200).json(newAuthor);
 
   } catch (err) {
     return res.json({ message: err.message });
@@ -16,8 +16,8 @@ const createOne = async (req, res) => {
 //***      POST(ÇOKLU) İŞLEMİ          ****/
 const bulkCreate = async (req, res) => {
   try {
-    const newBooks = await bookModel.bulkCreate(req.body);
-    return res.status(200).json(newBooks);
+    const newAuthors = await authorModel.bulkCreate(req.body);
+    return res.status(200).json(newAuthors);
   } catch (err) {
     return res.json({ message: err.message });
   }
@@ -27,8 +27,8 @@ const bulkCreate = async (req, res) => {
 //***      FİND/GET İŞLEMİ          ****/
 const find = async (req, res) => {
   try {
-    const book = await bookModel.findAll();
-    return res.json(book);
+    const author = await authorModel.findAll();
+    return res.json(author);
   } catch (err) {
     return res.json({ message: err.message });
   }
@@ -38,15 +38,15 @@ const find = async (req, res) => {
 //***      UPDATE/PUT İŞLEMİ          ****/
 const update = async (req, res) => {
   try {
-    const { bookName } = req.body;
-    const changeBook = await bookModel.update({bookName: bookName },{
+    const { author } = req.body;
+    const changeauthor = await authorModel.update({author:author },{
         where:{
-            bookName:"Gönül"
+            author:"Tolstoy",
            
         }
     }).catch((err)=>{console.log(err); })
 
-    return res.status(200).json(changeBook);
+    return res.status(200).json(changeauthor);
   } catch (err) {
     return res.json({ message: err.message });
   }
@@ -57,7 +57,7 @@ const update = async (req, res) => {
 const delItem = async (req, res) => {
   try {
     const id=req.params.id;
-    await bookModel.destroy({where:{
+    await authorModel.destroy({where:{
         id:id
     }})
 

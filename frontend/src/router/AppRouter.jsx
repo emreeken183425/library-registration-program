@@ -10,7 +10,7 @@ function AppRouter() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/book" element={<Books />} />
+        <Route path="/bookk" element={<Books />} />
         <Route path="/addbook" element={<AddBook />} />
 
 
