@@ -1,7 +1,7 @@
 import React from 'react'
 import Pagination from "react-bootstrap-pagination";
 
-const Paginate = ({newsPerPage,totalPages,paginate}) => {
+const Paginate = ({bookPerPage,totalPages,paginate}) => {
     const [activePage, setActivePage] = React.useState(1);
 
   let items = [];
