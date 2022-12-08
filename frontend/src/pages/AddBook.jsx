@@ -4,93 +4,69 @@ import axios from "axios";
 function AddBook({}) {
 
   const [book, setBook] = useState({
-    bookName:"",
+    bookName:""
     
   })
   const [author, setAuthor] = useState({
     author:""
   })
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState({
+    category:""
+  })
 
-const [publisher, setPublisher] = useState("")
+const [publisher, setPublisher] = useState({
+  publisher:""
+})
 
 
 
   const handleChangeBook = (e) => {
-    const { name, value } = e.target.value;
-    setBook((prevInput) => {
-      return {
-        ...prevInput,
-        [name]: value,
-      };
-    });
+  
+    setBook(prevInput =>( {'bookName':e.target.value}))
+    
   };
   const handleChangedAuthor = (e) => {
-    const { name, value } = e.target.value;
-    setAuthor((prevInput) => {
-      return {
-        ...prevInput,
-        [name]: value,
-      };
-    });
+  
+    setAuthor(prevInput =>({"author":e.target.value}));
   };
   const handleChangedCategory = (e) => {
-    const { name, value } = e.target.value;
-    setCategory((prevInput) => {
-      return {
-        ...prevInput,
-        [name]: value,
-      };
-    });
+    
+    setCategory(prevInput =>({"category":e.target.value}));
   };
   const handleChangedPublisher = (e) => {
-    const { name, value } = e.target.value;
-    setPublisher((prevInput) => {
-      return {
-        ...prevInput,
-        [name]: value,
-      };
-    });
+    setPublisher(prevInput =>({"publisher":e.target.value})      );
   };
 //! add book,author,category,publisher
   const addBook = (e) => {
     e.preventDefault();
-    const newBook = {
-      bookName: book.bookName
-    };
     //backende veri gönderdik newbook backendeki server.js bizim url
-    axios.post("/book", newBook);
+    axios.post("/book", book);
     alert(`The Book ${book.bookName} is added. `);  
   };
 
   const addAuthor = (e) => {
     e.preventDefault();
-    const newAuthor = {
-      author:author.author
-    };
+    
     //backende veri gönderdik newbook backendeki server.js bizim url
-    axios.post("/author", newAuthor);
+    axios.post("/author", author);
     alert(`The Author ${author.author} is added. `);
   };
   const addCategory = (e) => {
     e.preventDefault();
-    const newCategory = {
-      category:category.category
-    };
+    
     //backende veri gönderdik newbook backendeki server.js bizim url
-    axios.post("/category", newCategory);
+    axios.post("/category", category);
     alert(`The Category ${category.category} is added. `);
   };
   const addPublisher = (e) => {
     e.preventDefault();
-    const newPublisher = {
-      publisher:publisher.publisher
-    };
+   
     //backende veri gönderdik newbook backendeki server.js bizim url
-    axios.post("/publisher", newPublisher);
+    axios.post("/publisher", publisher);
     alert(`The Publisher ${publisher.publisher} is added. `);
   };
 
+ 
 
   return (
     <div>
@@ -99,7 +75,7 @@ const [publisher, setPublisher] = useState("")
           <div className="form-floating mb-3">
             <input cd
               type="text" 
-             
+             value={book.bookName}
              onChange={handleChangeBook}
               name="bookName"
               className="form-control"
@@ -113,7 +89,7 @@ const [publisher, setPublisher] = useState("")
             <input
               type="text"
               onChange={handleChangedAuthor}
-              
+              value={author.author}
               name="author"
               className="form-control"
               id="floatingInput"
@@ -127,7 +103,7 @@ const [publisher, setPublisher] = useState("")
           <input
               type="text"
               onChange={handleChangedCategory}
-            
+            value={category.category}
               name="department"
               className="form-control"
               id="floatingInput"

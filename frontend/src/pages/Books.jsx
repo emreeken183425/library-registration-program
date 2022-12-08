@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
 
-import Paginate from "../components/Pagination";
-import Pagination from "react-bootstrap-pagination/dist/pagination";
+//import Paginate from "../components/Pagination";
+//import Pagination from "react-bootstrap-pagination/dist/pagination";
 function Books() {
   const [books, setBooks] = useState([]);
   const [author, setAuthor] = useState([]);
   const [category, setCategory] = useState([]);
   const [publisher, setPublisher] = useState([]);
+  const [editOpen, setEditOpen] = useState(false)
+  const [editBook, setEditBook] = useState("")
   // //! PAGİNATİON
   // const [currentPage,setCurrentPage] =useState(1)
   // const [newsPerPage] =useState(9)
@@ -59,13 +61,26 @@ function Books() {
 
 
 
-  }, []);
+  
+    }, []);
 
- 
+    const updateBook=(id)=>{
+      try {
+        axios.put("/updatebook/"+id,{bookName:editBook} );
+      alert(`The Book with id ${id} is updated `);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
   const deleteBook = (id) => {
-    axios.delete("/delete/:id" );
+    try {
+      axios.delete("/delete/"+id );
     alert(`The Book with id ${id} is deleted `);
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
   const deleteAuthor = (id) => {
     axios.delete("/delete/:id" );
@@ -80,7 +95,7 @@ function Books() {
     alert(`The Publisher with id ${id} is deleted `);
   };
 
-
+console.log(books);
 
 
   return (
@@ -94,8 +109,9 @@ function Books() {
                <ul key={index} className="m-2">
                 <li scope="row">{book.bookName} </li>
                 <li>
-                  <button className="btn btn-warning">EDİT</button>
-                  <button onClick={()=>deleteBook(book._id)} className="btn btn-danger">DELETE</button>
+                  <button  onClick={()=>setEditOpen(!editOpen)} className="btn btn-warning">EDİT</button>
+                  {editOpen ?<> <input onChange={(e)=>setEditBook(e.target.value)} type="text"  /> <button onClick={()=>updateBook(book.id)} >edit</button></> : null } 
+                  <button  onClick={()=>deleteBook(book.id)} className="btn btn-danger">DELETE</button>
 
                   </li>
               

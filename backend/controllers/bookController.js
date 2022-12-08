@@ -41,7 +41,7 @@ const update = async (req, res) => {
     const { bookName } = req.body;
     const changeBook = await bookModel.update({bookName: bookName },{
         where:{
-            bookName:"Gönül"
+            bookName:"Beyaz Gemi"
            
         }
     }).catch((err)=>{console.log(err); })
