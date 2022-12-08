@@ -14,6 +14,8 @@ function AddBook({}) {
 
 const [publisher, setPublisher] = useState("")
 
+
+
   const handleChangeBook = (e) => {
     const { name, value } = e.target.value;
     setBook((prevInput) => {
@@ -50,6 +52,7 @@ const [publisher, setPublisher] = useState("")
       };
     });
   };
+//! add book,author,category,publisher
   const addBook = (e) => {
     e.preventDefault();
     const newBook = {
@@ -96,6 +99,7 @@ const [publisher, setPublisher] = useState("")
           <div className="form-floating mb-3">
             <input cd
               type="text" 
+             
              onChange={handleChangeBook}
               name="bookName"
               className="form-control"
