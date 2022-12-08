@@ -86,15 +86,20 @@ function Books() {
     
   };
   const deleteAuthor = (id) => {
-    axios.delete("/delete/:id" );
+    try {
+      axios.delete("/deleteauthor/"+id );
     alert(`The Author with id ${id} is deleted `);
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
   const deleteCategory = (id) => {
-    axios.delete("/delete/:id" );
+    axios.delete("/deletecategory/"+id );
     alert(`The Category with id ${id} is deleted `);
   };
   const deletePublisher = (id) => {
-    axios.delete("/delete/:id" );
+    axios.delete("/deletepublisher/"+id );
     alert(`The Publisher with id ${id} is deleted `);
   };
 
@@ -106,14 +111,14 @@ console.log(books);
     <div className="bookPage">
       <div className="row">
         <div className="col-md-3 book">
-          <h1>BOOKNAME</h1>
+          <h1>BOOKNAME</h1><hr />
           {books.map((book, index) => {
             return (
              
-               <ul key={book.id}  className="m-2">
+               <ul key={book.id} >
                 <li scope="row">{book.bookName} </li>
                 <li>
-                  <button  onClick={()=>setEditOpen(!editOpen)} className="btn  btn-warning me-2">EDİT</button>
+                  <button  onClick={()=>setEditOpen(!editOpen)} className="btn  btn-warning me-2  ">EDİT</button>
                   {editOpen ?<> <input onChange={(e)=>setEditBook(e.target.value)} type="text"  /> <button onClick={()=>updateBook(book.id)} >edit</button></> : null } 
                   <button  onClick={()=>deleteBook(book.id)} className="btn btn-danger">DELETE</button>
 
@@ -128,35 +133,35 @@ console.log(books);
           })}
         </div>
        <div className="col-md-3 author">
-          <h1>AUTHOR</h1>
+          <h1>AUTHOR</h1><hr />
           {author.map((author, index) => {
             return (
               <ul key={author.id}>
                 <li scope="row">{author.author} </li>
                 <li>
-                  <button className="btn btn-warning">EDİT</button>
-                <button onClick={()=>deleteAuthor(author._id)} className="btn btn-danger">DELETE</button>
+                  <button className="btn btn-warning me-2">EDİT</button>
+                <button  onClick={()=>deleteAuthor(author.id)} className="btn btn-danger">DELETE</button>
                 </li>
               </ul>
             );
           })}
         </div> 
          <div className="col-md-3 category">
-          <h1>CATEGORY</h1>
+          <h1>CATEGORY</h1> <hr />
           {category.map((category, index) => {
             return (
               <ul key={category.id}>
                 <li scope="row">{category.category} </li>
                 <li>
-                  <button className="btn btn-warning">EDİT</button>
-                  <button onClick={()=>deleteCategory(category._id)} className="btn btn-danger">DELETE</button>
+                  <button className="btn btn-warning me-2">EDİT</button>
+                  <button onClick={()=>deleteCategory(category.id)} className="btn btn-danger">DELETE</button>
                   </li>
               </ul>
             );
           })}
         </div> 
         <div className="col-md-3 publisher">
-          <h1>PUBLİSHER</h1>
+          <h1>PUBLİSHER</h1><hr />
           {publisher.map((publisher, index) => {
             return (
               <>
@@ -164,8 +169,8 @@ console.log(books);
               <ul key={publisher.id}>
                 <li scope="row">{publisher.publisher} </li>
                 <li>
-                  <button className="btn btn-warning">EDİT</button>
-                  <button onClick={()=>deletePublisher(publisher._id)} className="btn btn-danger">DELETE</button>
+                  <button className="btn btn-warning me-2">EDİT</button>
+                  <button  onClick={()=>deletePublisher(publisher.id)} className="btn btn-danger">DELETE</button>
                 </li>
               </ul>
               

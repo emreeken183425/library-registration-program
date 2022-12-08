@@ -69,7 +69,7 @@ const [publisher, setPublisher] = useState({
  
 
   return (
-    <div>
+    <div className="addBookPage" >
       <div className="container w-50 mt-5 border border-secondary ">
         <form style={{ padding: "20px 20px 10px 20px" }}>
           <div className="form-floating mb-3">

@@ -33,7 +33,7 @@ router.route('/getauthor').get(auCtrl.find);
 router.route('/updateauthor/:id').put(auCtrl.update);
 
 //*** delete işlemi   ****/
-router.route('/delete/:id').delete(auCtrl.delItem);
+router.route('/deleteauthor/:id').delete(auCtrl.delItem);
 
 
 //*****************CATEGORY   *****************/
@@ -49,7 +49,7 @@ router.route('/getcategory').get(caCtrl.find);
 router.route('/updatecategory/:id').put(caCtrl.update);
 
 //*** delete işlemi   ****/
-router.route('/delete/:id').delete(caCtrl.delItem);
+router.route('/deletecategory/:id').delete(caCtrl.delItem);
 
 //*****************PUBLİSHER   *****************/
 //*** post işlemi   ****/
@@ -64,7 +64,7 @@ router.route('/getpublisher').get(puCtrl.find);
 router.route('/updatepublisher/:id').put(puCtrl.update);
 
 //*** delete işlemi   ****/
-router.route('/delete/:id').delete(puCtrl.delItem);
+router.route('/deletepublisher/:id').delete(puCtrl.delItem);
 
 
 

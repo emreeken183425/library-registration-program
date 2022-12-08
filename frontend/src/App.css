@@ -21,6 +21,20 @@ box-sizing: border-box;
     margin-top: 50px;
   
 }
+.addBookPage{
+    margin-top: 65px;
+    background: gray;
+}
+.addBookPage form{
+   
+    background:rgb(167, 51, 51);
+    border-radius: 25px;
+    cursor: pointer;
+}
+.addBookPage form input{
+    cursor: pointer;
+}
+
 
 .row{
     margin: auto;
@@ -30,11 +44,14 @@ box-sizing: border-box;
     height: 565px;
 }
 .book{
-    background-color: aqua;
+    background-color: rgb(70, 173, 49);
     width: 25%;
     height:100%;
     padding:1rem;
     gap: 1px;
+    color: wheat;
+    font-size: large;
+    
     
     
 }
@@ -51,23 +68,29 @@ box-sizing: border-box;
     list-style: none;
 }
 .author{
-    background-color:yellowgreen;
+    background-color:rgb(201, 153, 65);
     width: 25%;
     height:100%;
     padding:1rem;
     gap: 1px;
+    color: wheat;
+    font-size: large;
 }
 .category{
-    background-color:rebeccapurple;
+    background-color:rgb(70, 166, 179);
     width: 25%;
     height:100%;
     padding:1rem;
     gap: 1px;
+    color: wheat;
+    font-size: large;
 }
 .publisher{
-    background-color:azure;
+    background-color:rgb(156, 51, 160);
     width: 25%;
     height:100%;
     padding:1rem;
     gap: 1px;
+    color: wheat;
+    font-size: large;
 }
